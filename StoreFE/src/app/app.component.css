@@ -1,0 +1,106 @@
+:root {
+  --primary: #ff5a00;
+  --dark: #333;
+  --gray-bg: #f4f4f4;
+}
+
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+}
+
+.navbar .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.brand {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.brand span {
+  color: var(--primary);
+}
+
+.search-wrapper {
+  flex-grow: 1;
+  max-width: 500px;
+  display: flex;
+
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid black;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-wrapper .btn-search {
+  background-color: lightblue;
+  color: black;
+  border: 2px solid black;
+  padding: 0 20px;
+  border-radius: 0 8px 8px 0;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
+.nav-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-actions button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.nav-actions .btn-text {
+  background: none;
+  border: black solid 2px;
+  color: var(--dark);
+}
+
+.nav-actions .btn-primary {
+  background-color: var(--primary);
+  color: black;
+  background: lightblue;
+  border: black solid 2px;
+}
+
+.nav-actions .btn-outline {
+  background: transparent;
+  color: var(--dark);
+  border: 1px solid #ccc;
+}
+
+.nav-actions .btn-outline:hover {
+  border-color: var(--dark);
+}
+
+.main-content {
+  background-color: var(--gray-bg);
+  min-height: calc(100vh - 80px);
+}

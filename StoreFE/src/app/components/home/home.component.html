@@ -1,0 +1,10 @@
+<div class="welcome-banner" *ngIf="!keycloakService.isLoggedIn()">
+  <div class="banner-content">
+    <h2>Banner Placeholder</h2>
+    <p>sottotitolo</p>
+    <button class="cta-banner" (click)="keycloakService.login()">Registrati</button>
+  </div>
+</div>
+
+<section class="featured-section">
+</section>

@@ -22,4 +22,44 @@ export class KeycloakService {
       checkLoginIframe: false,
     });
   }
+   isLoggedIn(): boolean {
+    return  !!this.keycloak?.authenticated;
+  }
+
+  login(redirectUri?: string): void {
+    this.keycloak.login({
+      redirectUri: redirectUri || window.location.href
+    });
+  }
+
+  register(redirectUri?: string): void {
+    this.keycloak.login({
+      redirectUri: redirectUri || window.location.href,
+      action: 'register'
+    });
+  }
+
+  logout(): void {
+    this.keycloak.logout({
+      redirectUri: window.location.origin
+    });
+  }
+
+  async getToken(): Promise<string> {
+    try {
+      if (!this.keycloak?.authenticated) {
+        return '';
+      }
+      await this.keycloak.updateToken(30);
+      return this.keycloak.token as string;
+    } catch (e) {
+      console.error('Token refresh failed', e);
+      this.login();
+      return '';
+    }
+  }
+
+  hasRole(role: string): boolean {
+    return this.keycloak.hasResourceRole(role);
+  }
 }
