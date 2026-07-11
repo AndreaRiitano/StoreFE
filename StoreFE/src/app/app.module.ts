@@ -1,18 +1,21 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, HttpClientModule } from '@angular/common/http';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import {KeycloakService} from './security/keycloak/keycloak.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthInterceptor } from './security/keycloak/auth.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [
@@ -24,6 +27,11 @@ import { HomeComponent } from './components/home/home.component';
       multi: true,
       deps: [KeycloakService]
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

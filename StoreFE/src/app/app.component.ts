@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { KeycloakService } from './security/keycloak/keycloak.service';
+import { UserService } from './services/user.service.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +8,29 @@ import { KeycloakService } from './security/keycloak/keycloak.service';
 })
 export class AppComponent {
   title = 'StoreFE';
-  constructor(public keycloakService: KeycloakService) {
+  constructor(
+    public keycloakService: KeycloakService,
+    public userService: UserService
+  ) {
+  }
+
+
+  ngOnInit(): void {
+    if (this.keycloakService.isLoggedIn()) {
+      //debug
+      console.log('TOKEN:', this.keycloakService.keycloak?.tokenParsed);
+      this.userService.syncUser().subscribe({
+        next: (response: any) => {
+          console.log('Sync ok', response);
+        },
+        error: (err: any) => {
+          console.error('Sync err', err);
+        }
+      });
+    }
+  }
+
+  logout() {
+    this.keycloakService.logout();
   }
 }

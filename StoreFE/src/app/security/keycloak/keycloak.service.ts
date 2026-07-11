@@ -8,7 +8,7 @@ export class KeycloakService {
 
   constructor() { }
 
-  private keycloak!: Keycloak;
+  public keycloak!: Keycloak;
 
   init(): Promise<boolean> {
     this.keycloak = new Keycloak({
@@ -40,10 +40,22 @@ export class KeycloakService {
   }
 
   logout(): void {
-    this.keycloak.logout({
-      redirectUri: window.location.origin
-    });
+
+    this.keycloak.clearToken();
+    sessionStorage.clear();
+    localStorage.clear();
+
+    const realm = 'store';
+    const clientId = 'prod';
+    const redirectUri = 'http://localhost:4200';
+
+    const logoutUrl = `http://localhost:9090/realms/${realm}/protocol/openid-connect/logout`
+      + `?client_id=${clientId}`
+      + `&post_logout_redirect_uri=${encodeURIComponent(redirectUri)}`;
+    
+    window.location.href = logoutUrl;
   }
+
 
   async getToken(): Promise<string> {
     try {

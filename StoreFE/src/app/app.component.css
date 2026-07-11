@@ -79,15 +79,22 @@
 
 .nav-actions .btn-text {
   background: none;
-  border: black solid 2px;
+  border: 1px solid #ccc;
   color: var(--dark);
+}
+
+.nav-actions .btn-text:hover {
+  border-color: var(--dark);
 }
 
 .nav-actions .btn-primary {
   background-color: var(--primary);
   color: black;
   background: lightblue;
-  border: black solid 2px;
+  border: 1px solid #ccc;
+}
+.nav-actions .btn-primary:hover {
+  border-color: var(--dark);
 }
 
 .nav-actions .btn-outline {
