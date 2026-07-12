@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {KeycloakService} from '../../security/keycloak/keycloak.service'
 import { ProductService } from '../../services/product.service'
 import { CartService } from '../../services/cart.service'
+import { Product } from  '../../models/product.model'
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,18 @@ export class HomeComponent implements OnInit {
     this.productService.getAllProducts().subscribe({
       next: (data) => this.products = data,
       error: (err) => console.error('Err', err)
+    });
+  }
+
+  addToCart(product : Product): void {
+
+    this.cartService.addToCart(product).subscribe({
+      next: (response) => {
+        console.log("Richiesta inviata con successo!", response);
+      },
+      error: (err) => {
+        console.error("Errore durante la POST:", err);
+      }
     });
   }
 

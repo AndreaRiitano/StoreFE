@@ -17,7 +17,8 @@ export class UserService {
     private keycloakService: KeycloakService,
 
   ) {
-    this.loadUserFromKeycloak();
+   const profile =  this.loadUserFromKeycloak();
+    console.log("DEBUG: ", this.getCurrentUser());
   }
 
 
@@ -35,12 +36,12 @@ export class UserService {
         const profile = await this.keycloakService.getUserProfileFromToken();
 
         const userLogged: User = {
-          keycloakId: profile.id || '',
-          email: profile['email'],
-          firstName: profile['firstName'],
-          lastName: profile['lastName'],
-          phone : profile['phone'] || '',
-          address : profile['address'] || '',
+          keycloakId: profile.sub,
+          email: profile.email || '',
+          firstName: profile.firstName || '',
+          lastName: profile.lastName || '',
+          phone: profile.phone || '',
+          address: profile.address || '',
         };
 
         this.currentUserSubject.next(userLogged);
@@ -52,6 +53,16 @@ export class UserService {
     }
   }
 
+   getCurrentUserKeycloakId(): string {
+
+    const id = this.currentUserSubject.value?.keycloakId;
+    if(id === undefined || id === null) {
+      return '';
+    }else {
+      return id;
+    }
+    console.log(id);
+   }
 
    getCurrentUser(): User | null {
     return this.currentUserSubject.value;

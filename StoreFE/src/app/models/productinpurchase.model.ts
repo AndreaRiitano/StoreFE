@@ -1,6 +1,8 @@
+import {Product} from './product.model';
+
 export interface ProductInPurchase {
-  id: number;
-  productId: number;
-  quantity: number;
-  userId: number;
+  id?: number;
+  product?: Product;
+  quantity?: number;
+  keycloakId?: string;
 }

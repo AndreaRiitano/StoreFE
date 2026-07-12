@@ -95,4 +95,16 @@ export class KeycloakService {
     }
     return null;
   }
+
+  getUserKcId(): any {
+
+    if (this.keycloak && this.keycloak.tokenParsed) {
+      const token = this.keycloak.tokenParsed;
+
+      return {
+        keycloakId: token.sub,
+      };
+    }
+    return null;
+  }
 }

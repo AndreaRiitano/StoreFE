@@ -24,10 +24,10 @@
       <div class="product-actions">
 
         <ng-container *ngIf="isLogged; else anonimoTemplate">
-          <button class="btn-detail" [routerLink]="['/prodotti', product.id]">
+          <button class="btn-detail" [routerLink]="['/products', product.id]">
             Vedi Dettagli
           </button>
-          <button class="btn-cart">
+          <button class="btn-cart" (click)="addToCart(product)">
             Aggiungi al Carrello
           </button>
         </ng-container>
