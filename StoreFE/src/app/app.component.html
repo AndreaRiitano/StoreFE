@@ -17,14 +17,14 @@
       </ng-container>
 
       <ng-container *ngIf="keycloakService.isLoggedIn()">
-        <button class="btn-text">Area Personale</button>
+        <button class="btn-text" (click)="goToPersonalArea()">Area Personale</button>
         <button class="btn-outline" (click)="logout()">Esci</button>
       </ng-container>
     </div>
 
     <div>
 
-      <a routerLink="/cart" class="cart-btn">
+      <a routerLink="/cart" class="cart-link">
         🛒 Carrello
         <span class="badge" *ngIf="cartCount> 0">
           {{ cartCount }}

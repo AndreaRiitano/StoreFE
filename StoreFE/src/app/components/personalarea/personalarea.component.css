@@ -1,0 +1,196 @@
+/* --- Contenitore Principale --- */
+.profile-wrapper {
+  padding: 40px 20px;
+  background-color: #f4f7f9;
+  min-height: calc(100vh - 80px);
+}
+
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Header e Copertina --- */
+.profile-header {
+  position: relative;
+}
+
+.cover-photo {
+  height: 200px;
+
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.profile-avatar-wrapper {
+  position: absolute;
+  bottom: -50px;
+  left: 50px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  background-color: #ffffff;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 700;
+  color: #764ba2;
+}
+
+/* --- Layout Contenuto (Flexbox) --- */
+.profile-content {
+  display: flex;
+  padding: 70px 50px 50px;
+  gap: 50px;
+}
+
+/* --- Sidebar Sinistra --- */
+.profile-sidebar {
+  flex: 1;
+  max-width: 250px;
+}
+
+.user-name {
+  margin: 0 0 5px;
+  font-size: 26px;
+  color: #2d3748;
+  font-weight: 700;
+}
+
+.user-role {
+  color: #718096;
+  font-size: 13px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* --- Bottoni --- */
+.btn-modern {
+  width: 100%;
+  padding: 12px 20px;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  color: #4a5568;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.btn-modern:hover {
+  background: #764ba2;
+  color: white;
+  border-color: #764ba2;
+  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3);
+}
+
+.btn-danger {
+  background: transparent;
+  color: #e53e3e;
+  border-color: #fc8181;
+}
+
+.btn-danger:hover {
+  background: #e53e3e;
+  color: white;
+  border-color: #e53e3e;
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+/* --- Card Dettagli Destra --- */
+.profile-details {
+  flex: 2;
+}
+
+.detail-card {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid #edf2f7;
+}
+
+.detail-card h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #1a202c;
+  font-size: 18px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+
+/* --- Griglia Informazioni --- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #a0aec0;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.info-value {
+  font-size: 16px;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+/* --- Loading Spinner --- */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: #718096;
+}
+
+
+@media (max-width: 768px) {
+  .profile-content {
+    flex-direction: column;
+    padding: 70px 30px 30px;
+    gap: 30px;
+  }
+
+  .profile-avatar-wrapper {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .profile-sidebar {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}

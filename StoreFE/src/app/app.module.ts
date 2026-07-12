@@ -8,12 +8,16 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './security/keycloak/auth.interceptor';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
+import { PersonalAreaComponent } from './components/personalarea/personalarea.component';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CartComponent,
+    PersonalAreaComponent,
   ],
   imports: [
     BrowserModule,

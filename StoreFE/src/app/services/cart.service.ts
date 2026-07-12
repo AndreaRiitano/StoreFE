@@ -44,8 +44,12 @@ export class CartService {
       quantity: 1,
       keycloakId: currentUserId,
     };
-    return this.http.post(`${this.apiUrl}/addToCart`, pipToCart)
-
+    return this.http.post(`${this.apiUrl}/addToCart`, pipToCart).pipe(
+      tap(() => {
+        const current = this.cartCountSubject.value;
+        this.cartCountSubject.next(current + 1);
+      })
+    );
   }
 
   getCartCount(): number {

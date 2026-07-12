@@ -1,0 +1,55 @@
+<div class="profile-wrapper" *ngIf="user; else loading">
+  <div class="profile-container">
+
+    <div class="profile-header">
+      <div class="cover-photo"></div>
+      <div class="profile-avatar-wrapper">
+        <div class="avatar">
+          {{ user.firstName.charAt(0) || 'U' }}{{ user.lastName.charAt(0) || 'T' }}
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+
+      <div class="profile-sidebar">
+        <h2 class="user-name">{{ user.firstName }} {{ user.lastName }}</h2>
+        <p class="user-role">Cliente Verificato</p>
+        <button class="btn-modern">Modifica Profilo</button>
+        <button class="btn-modern btn-danger mt-2" (click)="keycloakService.logout()">Esci dall'account</button>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-card">
+          <h3>Informazioni Personali</h3>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Email</span>
+              <span class="info-value">{{ user.email }}</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">Telefono</span>
+              <span class="info-value">{{ user.phone || 'Non inserito' }}</span>
+            </div>
+
+            <div class="info-item full-width">
+              <span class="info-label">Indirizzo di Spedizione</span>
+              <span class="info-value">{{ user.address || 'Nessun indirizzo salvato. Aggiungilo per velocizzare i tuoi acquisti.' }}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading-state">
+    <div class="spinner"></div>
+    <p>Caricamento profilo...</p>
+  </div>
+</ng-template>

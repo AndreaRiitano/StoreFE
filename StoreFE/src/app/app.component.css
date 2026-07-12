@@ -111,3 +111,15 @@
   background-color: var(--gray-bg);
   min-height: calc(100vh - 80px);
 }
+.cart-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+  display: inline-block;
+}
+
+
+.cart-link:hover {
+  color: inherit;
+  cursor: pointer;
+}
