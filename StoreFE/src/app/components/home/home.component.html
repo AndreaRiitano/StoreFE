@@ -1,50 +1,58 @@
-<div class="welcome-banner" *ngIf="!keycloakService.isLoggedIn()">
-  <div class="banner-content">
-    <h2>Benvenuto !</h2>
-    <p>Registrati subito allo Store per usufruire di tutte le funzionalità.</p>
-    <button class="cta-banner" (click)="keycloakService.register()">Registrati</button>
-  </div>
-</div>
-<div class="container">
-  <h2>Il nostro Catalogo Prodotti</h2>
+<div class="home-modern-wrapper">
 
-  <div class="product-grid">
-    <div class="product-card" *ngFor="let product of products">
-
-      <img [src]="product.imgUrl" alt="{{product.name}}" class="product-thumb">
-
-      <div class="product-info">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.description }}</p>
-        <span>Prezzo: {{ product.price | currency:'EUR' }}</span>
-      </div>
-
-
-
-      <div class="product-actions">
-
-        <ng-container *ngIf="isLogged; else anonimoTemplate">
-          <button class="btn-detail" [routerLink]="['/products', product.id]">
-            Vedi Dettagli
-          </button>
-          <button class="btn-cart" (click)="addToCart(product)">
-            Aggiungi al Carrello
-          </button>
-        </ng-container>
-
-        <ng-template #anonimoTemplate>
-          <div class="login-prompt">
-            <p class="badge-notice">Accedi per acquistare</p>
-            <button class="btn-disabled" (click)="keycloakService.login()">
-              Accedi per i dettagli
-            </button>
-          </div>
-        </ng-template>
-
-      </div>
-
+  <header class="hero-section shadow" *ngIf="!keycloakService.isLoggedIn()">
+    <div class="hero-content">
+      <h1 class="hero-title">Benvenuto nello Store!</h1>
+      <p class="hero-subtitle">Esplora il nostro catalogo. Registrati subito per usufruire di tutte le funzionalità e offerte esclusive.</p>
+      <button class="btn-modern btn-accent" (click)="keycloakService.register()">Registrati Ora</button>
     </div>
-  </div>
+  </header>
+
+  <section class="catalog-container">
+    <div class="catalog-header">
+      <h2>Il nostro Catalogo Prodotti</h2>
+      <div class="header-divider"></div>
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card" *ngFor="let product of products">
+
+        <div class="card-image-wrapper">
+          <img [src]="product.imgUrl || 'assets/placeholder.png'" alt="{{product.name}}" class="product-image">
+        </div>
+
+        <div class="card-info">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-desc">{{ product.description }}</p>
+          <div class="price-container">
+            <span class="price-value">{{ product.price | currency:'EUR' }}</span>
+          </div>
+        </div>
+
+        <div class="card-actions">
+
+          <ng-container *ngIf="isLogged; else anonimoTemplate">
+            <button class="btn-modern btn-outline" [routerLink]="['/products', product.id]">
+              Dettagli
+            </button>
+            <button class="btn-modern btn-primary" (click)="addToCart(product)">
+              Aggiungi <i class="fa fa-shopping-cart"></i>
+            </button>
+          </ng-container>
+
+          <ng-template #anonimoTemplate>
+            <div class="login-prompt-container">
+              <p class="login-notice">Accedi per acquistare</p>
+              <button class="btn-modern btn-disabled" (click)="keycloakService.login()">
+                Accedi per i dettagli
+              </button>
+            </div>
+          </ng-template>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
-<section class="featured-section">
-</section>

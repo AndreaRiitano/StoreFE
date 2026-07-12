@@ -1,161 +1,233 @@
-:root {
-  --primary-color: #2563eb;
-  --text-dark: #1f2937;
-  --bg-light: #f3f4f6;
-}
-
-.landing-container {
+/* --- Contenitore Principale --- */
+.home-modern-wrapper {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding: 40px 20px;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-.welcome-banner {
-  background: lightskyblue;
-  border-bottom: 1px solid #ffcc80;
-  padding: 40px 20px;
+/* --- Hero Section --- */
+.hero-section {
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  border-radius: 24px;
+  padding: 70px 30px;
   text-align: center;
-  margin-bottom: 30px;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-.welcome-banner .banner-content {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.welcome-banner .banner-content h2 {
-  font-size: 2.2rem;
-  color: black;
+.hero-title {
+  font-size: 46px;
+  font-weight: 800;
   margin-bottom: 15px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-.welcome-banner .banner-content p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 25px;
-  line-height: 1.5;
-}
-
-.welcome-banner .banner-content .cta-banner {
-  background-color: dodgerblue;
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(255, 90, 0, 0.3);
-  transition: transform 0.2s, background-color 0.2s;
-}
-
-.welcome-banner .banner-content .cta-banner:hover {
-  background-color: #e65100;
-  transform: translateY(-2px);
-}
-
-/* --- SEZIONE HERO --- */
-.hero {
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-  color: white;
-  padding: 100px 20px;
-  text-align: center;
-  border-radius: 0 0 20px 20px;
-  margin-bottom: 50px;
-}
-
-.hero .hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero .hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero .hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
+.hero-subtitle {
+  font-size: 18px;
+  color: #cbd5e1;
+  margin-bottom: 35px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
-  opacity: 0.9;
 }
 
-.hero .hero-content .cta-button {
-  background-color: white;
-  color: var(--primary-color);
-  font-weight: bold;
-  font-size: 1.1rem;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.hero .hero-content .cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-/* --- GRIGLIA PRODOTTI --- */
-.featured-section {
+/* --- Intestazione Catalogo --- */
+.catalog-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px 50px;
 }
 
-.featured-section h2 {
-  text-align: center;
-  color: var(--text-dark);
-  font-size: 2rem;
+.catalog-header h2 {
+  font-size: 32px;
+  color: #1e293b;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.header-divider {
+  height: 5px;
+  width: 70px;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 3px;
   margin-bottom: 40px;
 }
 
+/* --- Griglia Prodotti (Card Grid) --- */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
 }
 
+/* --- Stile Card Singola --- */
 .product-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.product-thumb {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.product-info h3 {
-  margin: 0;
-  font-size: 1.1em;
-}
-
-.product-info p {
-  margin: 5px 0;
-  color: #666;
-}
-.product-info {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  height: 100%;
-  min-height: 80px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
-.product-actions {
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Immagine Card --- */
+.card-image-wrapper {
+  height: 200px;
+  background-color: #ffffff;
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08);
+}
+
+/* --- Info Card --- */
+.card-info {
+  padding: 25px 25px 15px;
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 19px;
+  color: #0f172a;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.product-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price-container {
   margin-top: auto;
 }
 
-.btn-details, .btn-cart {
-  padding: 5px 15px;
+.price-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0284c7;
+}
+
+/* --- Azioni Card (Bottoni) --- */
+.card-actions {
+  padding: 0 25px 25px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+/* --- Stili Bottoni Generici --- */
+.btn-modern {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  width: 100%;
+  border: none;
+}
+
+/* Bottone per aggiungere al carrello */
+.btn-primary {
+  background: #0284c7;
+  color: white;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.btn-primary:hover {
+  background: #0369a1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(2, 132, 199, 0.4);
+}
+
+/* Bottone per i Dettagli */
+.btn-outline {
+  background: transparent;
+  color: #0284c7;
+  border: 2px solid #e0f2fe;
+}
+
+.btn-outline:hover {
+  background: #f0f9ff;
+  border-color: #0284c7;
+}
+
+/* Bottone Registrati (Banner) */
+.btn-accent {
+  background: #4facfe;
+  color: white;
+  max-width: 250px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.btn-accent:hover {
+  background: #00f2fe;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
+}
+
+
+.btn-disabled {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-disabled:hover {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.login-prompt-container {
+  text-align: center;
+}
+
+.login-notice {
+  font-size: 12px;
+  color: #ef4444;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-actions {
+    flex-direction: column;
+  }
+  .hero-title {
+    font-size: 34px;
+  }
 }

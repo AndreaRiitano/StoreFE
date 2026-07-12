@@ -1,0 +1,35 @@
+<nav class="navbar-modern shadow">
+  <div class="nav-container">
+
+    <div class="brand" routerLink="/">
+      StoreEsamePSW<span>.it</span>
+    </div>
+
+    <div class="search-wrapper">
+      <input type="text" placeholder="Cosa stai cercando?">
+      <button class="btn-search">Cerca</button>
+    </div>
+
+    <div class="nav-actions">
+
+      <ng-container *ngIf="!keycloakService.isLoggedIn()">
+        <button class="btn-modern btn-text" (click)="keycloakService.login()">Accedi</button>
+        <button class="btn-modern btn-accent" (click)="keycloakService.register()">Registrati</button>
+      </ng-container>
+
+      <ng-container *ngIf="keycloakService.isLoggedIn()">
+        <button class="btn-modern btn-text" (click)="goToPersonalArea()">Area Personale</button>
+        <button class="btn-modern btn-outline" (click)="logout()">Esci</button>
+      </ng-container>
+
+      <a routerLink="/cart" class="cart-link">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-label">Carrello</span>
+        <span class="badge" *ngIf="cartCount > 0">
+          {{ cartCount }}
+        </span>
+      </a>
+
+    </div>
+  </div>
+</nav>
