@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {KeycloakService} from '../../security/keycloak/keycloak.service'
 import { ProductService } from '../../services/product.service'
+import { CartService } from '../../services/cart.service'
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public productService: ProductService,
-    public keycloakService: KeycloakService
+    public keycloakService: KeycloakService,
+    public cartService: CartService,
   ) {}
 
   ngOnInit(): void {
@@ -29,10 +31,4 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  aggiungiAlCarrello(product: any): void {
-    if (!this.isLogged) {
-      this.keycloakService.login();
-      return;
-    }
-  }
 }

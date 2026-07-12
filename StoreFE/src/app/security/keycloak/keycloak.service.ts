@@ -52,7 +52,7 @@ export class KeycloakService {
     const logoutUrl = `http://localhost:9090/realms/${realm}/protocol/openid-connect/logout`
       + `?client_id=${clientId}`
       + `&post_logout_redirect_uri=${encodeURIComponent(redirectUri)}`;
-    
+
     window.location.href = logoutUrl;
   }
 
@@ -71,7 +71,28 @@ export class KeycloakService {
     }
   }
 
+  getKeycloakId(): string | undefined {
+    return this.keycloak?.subject;
+  }
+
   hasRole(role: string): boolean {
     return this.keycloak.hasResourceRole(role);
+  }
+
+  getUserProfileFromToken(): any {
+
+    if (this.keycloak && this.keycloak.tokenParsed) {
+      const token = this.keycloak.tokenParsed;
+
+      return {
+        keycloakId: token.sub,
+        email: token['email'] || '',
+        firstName: token['given_name'] || '',
+        lastName: token['family_name'] || '',
+        phone: token['phone'] || '',
+        address: token['address'] || '',
+      };
+    }
+    return null;
   }
 }

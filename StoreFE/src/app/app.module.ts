@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './security/keycloak/auth.interceptor';
 import { RouterModule } from '@angular/router';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

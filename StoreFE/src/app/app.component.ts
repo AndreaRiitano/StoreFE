@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { KeycloakService } from './security/keycloak/keycloak.service';
-import { UserService } from './services/user.service.service'
+import { UserService } from './services/user.service'
+import { CartService } from './services/cart.service'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +12,8 @@ export class AppComponent {
   title = 'StoreFE';
   constructor(
     public keycloakService: KeycloakService,
-    public userService: UserService
+    public userService: UserService,
+    public cartService: CartService,
   ) {
   }
 
@@ -27,6 +30,7 @@ export class AppComponent {
           console.error('Sync err', err);
         }
       });
+
     }
   }
 
