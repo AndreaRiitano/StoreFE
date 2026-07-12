@@ -26,8 +26,8 @@
 
       <a routerLink="/cart" class="cart-btn">
         🛒 Carrello
-        <span class="badge" *ngIf="cartService.getCartCount() > 0">
-          {{ cartService.getCartCount() }}
+        <span class="badge" *ngIf="cartCount> 0">
+          {{ cartCount }}
         </span>
       </a>
     </div>

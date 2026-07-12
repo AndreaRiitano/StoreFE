@@ -18,7 +18,6 @@ export class UserService {
 
   ) {
    const profile =  this.loadUserFromKeycloak();
-    console.log("DEBUG: ", this.getCurrentUser());
   }
 
 

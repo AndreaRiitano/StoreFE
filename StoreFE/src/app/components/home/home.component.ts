@@ -36,10 +36,10 @@ export class HomeComponent implements OnInit {
 
     this.cartService.addToCart(product).subscribe({
       next: (response) => {
-        console.log("Richiesta inviata con successo!", response);
+        console.log("cart added", response);
       },
       error: (err) => {
-        console.error("Errore durante la POST:", err);
+        console.error("cart err", err);
       }
     });
   }

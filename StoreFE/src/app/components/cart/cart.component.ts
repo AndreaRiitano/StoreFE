@@ -11,16 +11,16 @@ export class CartComponent {
   productList: ProductInPurchase[] = [];
   constructor(private cartService: CartService) {}
 
-  ngOnInit() {
+/*  ngOnInit() {
 
-    this.cartService.getProductInCart().subscribe({
-      next: (data) => {
+    this.cartService.getProductInCartCount().subscribe({
+      next: (data : ProductInPurchase[]) => {
         this.productList = data;
 
       },
-      error: (err) => {
+      error: (err : any) => {
         console.error("err loading cart", err);
       }
     });
-  }
+  }*/
 }

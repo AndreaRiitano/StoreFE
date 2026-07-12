@@ -25,35 +25,14 @@ export class CartService {
     private userService: UserService,
   ) {}
 
-  getCart(userID: string): Observable<ProductInPurchase[]> {
-    let params = new HttpParams().set('id', userID);
-    return this.http.get<ProductInPurchase[]>(`${this.apiUrl}/cart`, {params: params});
-  }
-
-  getProductInCart(): Observable<ProductInPurchase[]> {
-
-    let toSearch: User | null = this.userService.getCurrentUser();
-
-    if (toSearch && toSearch.keycloakId) {
-      let id: string = toSearch.keycloakId;
-
-
-      return this.getCart(id).pipe(
-
-        tap((cart: ProductInPurchase[]) => {
-
-          const tot = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
-
-          this.cartCountSubject.next(tot);
-
-        })
-
-      );
+  getCart(userID: string|undefined): Observable<ProductInPurchase[]> {
+    if(userID) {
+      let params = new HttpParams().set('keycloakId', userID);
+      return this.http.get<ProductInPurchase[]>(`${this.apiUrl}/cart`, {params: params});
     }
-    console.error("error product retrieve ");
-    this.cartCountSubject.next(0);
     return of([]);
   }
+
 
   addToCart(product: Product): Observable<any> {
     const currentUserId : string | undefined = this.keycloakService.getKeycloakId();
@@ -70,7 +49,6 @@ export class CartService {
   }
 
   getCartCount(): number {
-
     return this.cartCountSubject.value
 
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { KeycloakService } from './security/keycloak/keycloak.service';
 import { UserService } from './services/user.service'
 import { CartService } from './services/cart.service'
-
+import { ProductInPurchase } from './models/productinpurchase.model'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +10,8 @@ import { CartService } from './services/cart.service'
 })
 export class AppComponent {
   title = 'StoreFE';
+  private keycloakId : string | undefined;
+  public cartCount =0;
   constructor(
     public keycloakService: KeycloakService,
     public userService: UserService,
@@ -18,10 +20,12 @@ export class AppComponent {
   }
 
 
+
   ngOnInit(): void {
     if (this.keycloakService.isLoggedIn()) {
       //debug
       console.log('TOKEN:', this.keycloakService.keycloak?.tokenParsed);
+      this.keycloakId= this.keycloakService.getKeycloakId();
       this.userService.syncUser().subscribe({
         next: (response: any) => {
           console.log('Sync ok', response);
@@ -31,10 +35,17 @@ export class AppComponent {
         }
       });
 
+      this.cartService.getCart(this.keycloakId).subscribe({
+        next: (pips) => {
+          this.cartCount = pips.length;
+          console.log("cart count update", this.cartCount);
+        }
+      });
     }
   }
 
   logout() {
     this.keycloakService.logout();
   }
+
 }
