@@ -36,4 +36,9 @@ export class ProductService {
     return this.http.post(`${this.apiUrl}/create`, product );
   }
 
+  searchProduct(name : string ): Observable<any>{
+    let params = new HttpParams();
+    params = params.set('name', name);
+    return this.http.get(`${this.apiUrl}/search`,{params});
+  }
 }
