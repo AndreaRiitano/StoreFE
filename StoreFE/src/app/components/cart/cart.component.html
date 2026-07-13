@@ -13,28 +13,30 @@
       <button class="btn-modern btn-primary mt-3" routerLink="/">Torna allo Store</button>
     </div>
 
-    <div class="cart-layout" *ngIf="groupedCartItems.length > 0">
+    <div class="cart-layout" *ngIf="cartItems.length > 0">
 
       <div class="cart-items-section">
-        <div class="cart-item-card" *ngFor="let item of groupedCartItems">
+        <div class="cart-item-card" *ngFor="let item of cartItems">
 
           <div class="item-image-wrapper">
-            <img [src]="item.product.imgUrl|| 'assets/placeholder.png'" alt="{{ item.product.imgUrl }}" class="item-image">
+            <img [src]="item?.product?.imgUrl || 'assets/placeholder.png'" alt="{{ item?.product?.name }}" class="item-image">
           </div>
 
           <div class="item-info">
-            <h4 class="item-name">{{ item.product.name }}</h4>
-            <p class="item-desc">{{ item.product.description }}</p>
+            <h4 class="item-name">{{ item?.product?.name }}</h4>
+
+            <div class="quantity-badge mt-2">
+              <span>Quantità: <strong>{{ item.quantity }}</strong></span>
+            </div>
           </div>
 
-          <div class="item-price-details">
-            <span class="unit-price">{{ item.product.price | currency:'EUR' }}</span>
-            <span class="quantity-multiplier"> x {{ item.quantity }} </span>
+          <div class="item-price-section">
+            {{ ((item.product?.price || 0) * (item.quantity || 1)) | currency:'EUR' }}
           </div>
 
           <div class="item-actions">
-            <button class="btn-icon-danger" title="Rimuovi prodotto" (click)="removeFromCart(item.product)">
-              <i class="fa fa-trash"></i> 🗑️
+            <button class="btn-icon-danger" (click)="removeFromCart(item.product!)">
+              🗑️
             </button>
           </div>
 
@@ -62,7 +64,7 @@
             <span>{{ cartTotal() | currency:'EUR' }}</span>
           </div>
 
-          <button class="btn-modern btn-accent w-100 mt-4">Procedi all'Acquisto</button>
+          <button class="btn-modern btn-accent w-100 mt-4" (click)="cartPurchase()">Procedi all'Acquisto</button>
 
           <div class="secure-checkout">
             <small>🔒 Pagamento sicuro e crittografato</small>

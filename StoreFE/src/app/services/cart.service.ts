@@ -30,11 +30,27 @@ export class CartService {
   getCart(userID: string|undefined): Observable<ProductInPurchase[]> {
     if(userID) {
       let params = new HttpParams().set('keycloakId', userID);
-      return this.http.get<ProductInPurchase[]>(`${this.apiUrl}/cart`, {params: params});
+      return this.http.get<ProductInPurchase[]>(`${this.apiUrl}/cart`, {params: params}).pipe(
+
+        tap((cartItems: ProductInPurchase[]) => {
+
+          const totalItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+          this.cartCountSubject.next(totalItems);
+        })
+      );
     }
     return of([]);
   }
 
+  initCartCount(): void {
+    const currentUserId = this.keycloakService.getKeycloakId();
+    if (currentUserId) {
+
+      this.getCart(currentUserId).subscribe({
+        error: (err) => console.error("Errore nell'inizializzazione del carrello:", err)
+      });
+    }
+  }
 
   addToCart(product: Product): Observable<any> {
     const currentUserId : string | undefined = this.keycloakService.getKeycloakId();
@@ -48,8 +64,7 @@ export class CartService {
     };
     return this.http.post(`${this.apiUrl}/addToCart`, pipToCart).pipe(
       tap(() => {
-        const current = this.cartCountSubject.value;
-        this.cartCountSubject.next(current + 1);
+        this.incrementCartCount();
       })
     );
   }
@@ -57,10 +72,15 @@ export class CartService {
   removeFromCart(product: Product): Observable<any> {
     const currentUserId : string | undefined = this.keycloakService.getKeycloakId();
     let toRemove: ProductInPurchase = {
+      quantity: 1,
       product: product,
       keycloakId: currentUserId,
     };
-    return this.http.post(`${this.apiUrl}/cartRemove`, toRemove);
+    return this.http.post(`${this.apiUrl}/cartRemove`, toRemove).pipe(
+      tap(() => {
+        this.decrementCartCount();
+      })
+    );
   }
 
   getCartCount(): number {
@@ -71,6 +91,12 @@ export class CartService {
     const current = this.cartCountSubject.value;
     if (current > 0) {
       this.cartCountSubject.next(current - 1);
+    }
+  }
+  incrementCartCount() {
+    const current = this.cartCountSubject.value;
+    if (current <99) {
+      this.cartCountSubject.next(current +1);
     }
   }
 }
