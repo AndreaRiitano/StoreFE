@@ -21,7 +21,12 @@ export class PurchaseService {
 
   }
 
-  getAllPurchase(user : User): Observable<any>{
+  getAllPurchase(): Observable<any>{
+
+    return this.http.get(`${this.apiUrl}/allPurchase`);
+  }
+
+  getAllUserPurchase(user : User): Observable<any>{
 
     return this.http.post(`${this.apiUrl}/orders`, user);
   }

@@ -11,6 +11,7 @@ import {KeycloakService} from '../../security/keycloak/keycloak.service'
 export class PersonalAreaComponent {
 
   user : User | null = null;
+  isAdmin: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -25,6 +26,8 @@ export class PersonalAreaComponent {
         this.user = user;
       }
     )
+
+    this.isAdmin = this.keycloakService.hasRole('admin');
   }
 
 }

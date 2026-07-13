@@ -20,7 +20,7 @@ export class OrdersComponent {
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
     if(this.currentUser) {
-      this.purchaseService.getAllPurchase(this.currentUser).subscribe(
+      this.purchaseService.getAllUserPurchase(this.currentUser).subscribe(
         data => {this.purchases = data
         }
       );

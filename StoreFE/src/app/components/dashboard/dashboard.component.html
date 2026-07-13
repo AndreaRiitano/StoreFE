@@ -1,0 +1,140 @@
+<div class="dashboard-wrapper">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>Admin Panel</h2>
+      <p class="admin-subtitle">Gestione Store</p>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item" [class.active]="activeTab === 'prodotti'" (click)="activeTab = 'prodotti'">
+        Gestione Prodotti
+      </li>
+      <li class="nav-item" [class.active]="activeTab === 'ordini'" (click)="activeTab = 'ordini'">
+        Tutti gli Ordini
+      </li>
+      <li class="nav-item" [class.active]="activeTab === 'utenti'" (click)="activeTab = 'utenti'">
+        Gestione Utenti
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="btn-outline" routerLink="/">
+        Torna allo Store
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="dashboard-section" *ngIf="activeTab === 'prodotti'">
+      <div class="section-header">
+        <div class="title-area">
+          <h2>Inventario Prodotti</h2>
+          <p>Aggiungi, modifica o rimuovi i prodotti dal catalogo.</p>
+        </div>
+        <button class="btn-primary">Nuovo Prodotto</button>
+      </div>
+
+      <div class="table-card">
+        <table class="admin-table">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome & Categoria</th>
+            <th>Prezzo</th>
+            <th>Giacenza</th>
+            <th>Azioni</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of products">
+            <td>#{{ product.id }}</td>
+            <td>
+              <div class="product-info">
+                <span class="p-name">{{ product.name }}</span>
+                <span class="p-cat">{{ product.category }}</span>
+              </div>
+            </td>
+            <td class="font-weight-bold">{{ product.price | currency:'EUR' }}</td>
+            <td>
+                <span class="badge" [ngClass]="product.quantity > 0 ? 'badge-success' : 'badge-danger'">
+                  {{ product.quantity }} in stock
+                </span>
+            </td>
+            <td class="actions-cell">
+              <button class="btn-action btn-edit">Modifica</button>
+              <button class="btn-action btn-delete" (click)="deleteProduct(product.id)">Elimina</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dashboard-section" *ngIf="activeTab === 'ordini'">
+      <div class="section-header">
+        <div class="title-area">
+          <h2>Ordini Globali</h2>
+          <p>Visualizza tutti gli acquisti effettuati dagli utenti.</p>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="admin-table">
+          <thead>
+          <tr>
+            <th>ID Ordine</th>
+            <th>Data</th>
+            <th>Utente (Keycloak ID)</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Totale</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let order of purchases">
+            <td class="font-weight-bold">#{{ order.id }}</td>
+            <td>{{ order.purchaseTime | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ order.user?.keycloakId}}</td>
+            <td>{{ order.user?.firstName}}</td>
+            <td>{{ order.user?.lastName}}</td>
+            <td class="font-weight-bold">{{ getOrderTotal(order) | currency:'EUR' }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dashboard-section" *ngIf="activeTab === 'utenti'">
+      <div class="section-header">
+        <div class="title-area">
+          <h2>Anagrafica Utenti</h2>
+          <p>Lista degli utenti registrati nel database.</p>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="admin-table">
+          <thead>
+          <tr>
+            <th>Keycloak ID</th>
+            <th>Nome Completo</th>
+            <th>Indirizzo</th>
+            <th>Telefono</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <td class="font-weight-bold">{{ user.keycloakId }}</td>
+            <td>{{ user.firstName }} {{ user.lastName }}</td>
+            <td>{{ user.address || 'N/A' }}</td>
+            <td>{{ user.phone || 'N/A' }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>

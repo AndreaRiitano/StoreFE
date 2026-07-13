@@ -7,6 +7,7 @@ import { AuthGuard } from './security/auth/auth.guard'
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { OrdersComponent } from './components/orders/orders.component'
 import { DetailComponent } from './components/detail/detail.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path:  'product/:id', component: DetailComponent},
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
   { path: 'invoice', component: InvoiceComponent, canActivate: [AuthGuard]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' },
 ];
 

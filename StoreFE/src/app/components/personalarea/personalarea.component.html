@@ -14,8 +14,11 @@
 
       <div class="profile-sidebar">
         <h2 class="user-name">{{ user.firstName }} {{ user.lastName }}</h2>
-        <p class="user-role">Cliente Verificato</p>
+        <p class="user-role"></p>
         <button class="btn-modern" routerLink="/orders">I Miei Ordini</button>
+        <button class="btn-modern" routerLink="/dashboard" *ngIf="isAdmin">
+          Apri Dashboard Admin
+        </button>
         <button class="btn-modern btn-danger mt-2" (click)="keycloakService.logout()">Esci dall'account</button>
       </div>
 

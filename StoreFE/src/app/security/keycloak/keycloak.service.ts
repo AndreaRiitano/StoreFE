@@ -76,7 +76,11 @@ export class KeycloakService {
   }
 
   hasRole(role: string): boolean {
-    return this.keycloak.hasResourceRole(role);
+    if (!this.keycloak) {
+      return false;
+    }
+    return this.keycloak.hasRealmRole(role);
+    
   }
 
   getUserProfileFromToken(): any {

@@ -66,4 +66,8 @@ export class UserService {
    getCurrentUser(): User | null {
     return this.currentUserSubject.value;
   }
+
+  getAllUser(): Observable<any>{
+    return this.http.get(`${this.backendUrl}/all`);
+  }
 }
