@@ -1,0 +1,40 @@
+<div class="invoice-container">
+  <div class="success-header">
+    <h2>Grazie per il tuo acquisto!</h2>
+    <p>Il tuo ordine è stato confermato.</p>
+    <p>Data ordine: {{ date | date:'dd/MM/yyyy HH:mm' }}</p>
+  </div>
+
+  <hr>
+
+  <div class="invoice-details">
+    <h3>Riepilogo Ordine</h3>
+
+    <table class="invoice-table">
+      <thead>
+      <tr>
+        <th>Prodotto</th>
+        <th>Quantità</th>
+        <th>Prezzo Unitario</th>
+        <th>Subtotale</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of invoiceProducts">
+        <td>{{ item?.product?.name }}</td>
+        <td>{{ (item?.quantity || 0) }}</td>
+        <td>{{ item?.product?.price | currency:'EUR' }}</td>
+        <td>{{ ((item.product?.price || 0 ) * (item.quantity || 1)) | currency:'EUR' }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="invoice-total">
+      <h3>Totale Pagato: {{ total | currency:'EUR' }}</h3>
+    </div>
+  </div>
+
+  <div class="actions mt-4">
+    <button class="btn btn-primary" routerLink="/">Torna alla Home</button>
+  </div>
+</div>

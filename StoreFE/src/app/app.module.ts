@@ -11,6 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { PersonalAreaComponent } from './components/personalarea/personalarea.component';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CartComponent,
     PersonalAreaComponent,
     NavbarComponent,
+    InvoiceComponent,
   ],
   imports: [
     BrowserModule,

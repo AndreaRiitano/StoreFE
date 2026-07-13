@@ -8,6 +8,7 @@ import { Product } from '../../models/product.model';
 import { CartItemDetails } from '../../models/cartitemdetails.model'
 import { Purchase } from '../../models/purchase.model'
 import {PurchaseService} from '../../services/purchase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -20,6 +21,7 @@ export class CartComponent {
     private cartService: CartService,
     private userService: UserService,
     private purchaseService: PurchaseService,
+    private router: Router
   ) {
   }
   public cartCount = 0;
@@ -67,10 +69,22 @@ export class CartComponent {
   }
 
     cartPurchase(): void {
-    let currentUser : User | null = this.userService.getCurrentUser();
-    if(currentUser){
-      this.purchaseService.addPurchase(currentUser).subscribe({
-
+    if(this.user){
+      const cartSnapshot = [...this.cartItems];
+      const totalCost = this.cartTotal();
+      console.log("Sto spedendo alla fattura:", cartSnapshot);
+      this.purchaseService.addPurchase(this.user).subscribe({
+        next: () => {
+          this.purchaseService.lastInvoice ={
+            products : cartSnapshot,
+            total: totalCost,
+            date : Date.now(),
+          }
+          this.cartItems = [];
+          this.cartService.initCartCount();
+          this.router.navigateByUrl('/invoice')
+        },
+        error: (err) => {console.log("error during purchase", err)}
       })
     }
     }

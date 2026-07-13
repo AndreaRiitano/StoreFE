@@ -1,0 +1,130 @@
+
+.invoice-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.success-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.success-header h2 {
+  color: #28a745;
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.success-header p {
+  color: #6c757d;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.success-header strong {
+  color: #333;
+}
+
+/* Linea separatrice */
+hr {
+  border: 0;
+  border-top: 1px solid #e9ecef;
+  margin: 30px 0;
+}
+
+/* Stile della tabella della fattura */
+.invoice-details h3 {
+  font-size: 22px;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.invoice-table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.invoice-table td {
+  color: #495057;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+/* Sezione Totale */
+.invoice-total {
+  text-align: right;
+  padding: 25px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 5px solid #007bff;
+}
+
+.invoice-total h3 {
+  margin: 0;
+  color: #212529;
+  font-size: 26px;
+}
+
+/* Bottone di ritorno alla home */
+.actions {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+
+@media (max-width: 600px) {
+  .invoice-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

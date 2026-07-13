@@ -9,7 +9,8 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class PurchaseService {
-
+  public lastInvoice : any = null;
+  
   private apiUrl = 'http://localhost:8080/purchases';
 
   constructor(private http: HttpClient) { }

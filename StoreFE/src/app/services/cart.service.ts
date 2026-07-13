@@ -87,6 +87,10 @@ export class CartService {
     return this.cartCountSubject.value
   }
 
+  resetCartCount(): void {
+    this.cartCountSubject.next(0);
+  }
+
   decrementCartCount() {
     const current = this.cartCountSubject.value;
     if (current > 0) {
