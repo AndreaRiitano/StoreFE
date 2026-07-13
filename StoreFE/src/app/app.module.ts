@@ -15,6 +15,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule

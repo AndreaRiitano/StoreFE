@@ -33,7 +33,7 @@
           <h2>Inventario Prodotti</h2>
           <p>Aggiungi, modifica o rimuovi i prodotti dal catalogo.</p>
         </div>
-        <button class="btn-primary">Nuovo Prodotto</button>
+        <button class="btn-primary" (click)="openCreateModal()">Nuovo Prodotto</button>
       </div>
 
       <div class="table-card">
@@ -63,7 +63,50 @@
                 </span>
             </td>
             <td class="actions-cell">
-              <button class="btn-action btn-edit">Modifica</button>
+              <button class="btn-action btn-edit"(click)="openEditModal(product)">Modifica</button>
+              <div class="modal-backdrop" *ngIf="isModalOpen && selectedProduct">
+                <div class="modal-card">
+
+                  <div class="modal-header">
+                    <h3>Modifica Prodotto #{{ selectedProduct.id }}</h3>
+                    <button class="btn-close-x" (click)="closeModal()">×</button>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label>Nome Prodotto</label>
+                      <input type="text" [(ngModel)]="selectedProduct.name">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Categoria</label>
+                      <input type="text" [(ngModel)]="selectedProduct.category">
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label>Prezzo (€)</label>
+                        <input type="number" [(ngModel)]="selectedProduct.price" step="0.01">
+                      </div>
+                      <div class="form-group">
+                        <label>Giacenza (Stock)</label>
+                        <input type="number" [(ngModel)]="selectedProduct.quantity">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Descrizione</label>
+                      <textarea rows="3" [(ngModel)]="selectedProduct.description"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button class="btn-action btn-edit" (click)="closeModal()">Annulla</button>
+                    <button class="btn-primary" (click)="editProduct()">Salva Modifiche</button>
+                  </div>
+
+                </div>
+              </div>
               <button class="btn-action btn-delete" (click)="deleteProduct(product.id)">Elimina</button>
             </td>
           </tr>
@@ -135,6 +178,47 @@
         </table>
       </div>
     </div>
+    <div class="modal-backdrop" *ngIf="isCreateModalOpen">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Crea Nuovo Prodotto</h3>
+          <button class="btn-close-x" (click)="closeCreateModal()">×</button>
+        </div>
 
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nome Prodotto</label>
+            <input type="text" [(ngModel)]="newProduct.name">
+          </div>
+          <div class="form-group">
+            <label>Categoria</label>
+            <input type="text" [(ngModel)]="newProduct.category">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Prezzo (€)</label>
+              <input type="number" [(ngModel)]="newProduct.price" step="0.01">
+            </div>
+            <div class="form-group">
+              <label>Giacenza (Stock)</label>
+              <input type="number" [(ngModel)]="newProduct.quantity">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Descrizione</label>
+            <textarea rows="3" [(ngModel)]="newProduct.description"></textarea>
+          </div>
+          <div class="form-group">
+            <label>ImgURL</label>
+            <textarea rows="3" [(ngModel)]="newProduct.imgUrl"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-action btn-edit" (click)="closeCreateModal()">Annulla</button>
+          <button class="btn-primary" (click)="addProduct()">Salva Prodotto</button>
+        </div>
+      </div>
+    </div>
   </main>
 </div>
