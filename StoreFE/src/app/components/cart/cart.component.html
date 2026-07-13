@@ -1,1 +1,75 @@
-<p>cart works!</p>
+<div class="cart-modern-wrapper">
+  <div class="cart-container">
+
+    <div class="cart-header">
+      <h2>Il Tuo Carrello</h2>
+      <div class="header-divider"></div>
+    </div>
+
+    <div class="empty-cart-state shadow" *ngIf="cartCount === 0">
+      <div class="empty-icon">🛒</div>
+      <h3>Il tuo carrello è vuoto</h3>
+      <p class="text-muted">Non hai ancora aggiunto nessun prodotto. Scopri le nostre offerte!</p>
+      <button class="btn-modern btn-primary mt-3" routerLink="/">Torna allo Store</button>
+    </div>
+
+    <div class="cart-layout" *ngIf="groupedCartItems.length > 0">
+
+      <div class="cart-items-section">
+        <div class="cart-item-card" *ngFor="let item of groupedCartItems">
+
+          <div class="item-image-wrapper">
+            <img [src]="item.product.imgUrl|| 'assets/placeholder.png'" alt="{{ item.product.imgUrl }}" class="item-image">
+          </div>
+
+          <div class="item-info">
+            <h4 class="item-name">{{ item.product.name }}</h4>
+            <p class="item-desc">{{ item.product.description }}</p>
+          </div>
+
+          <div class="item-price-details">
+            <span class="unit-price">{{ item.product.price | currency:'EUR' }}</span>
+            <span class="quantity-multiplier"> x {{ item.quantity }} </span>
+          </div>
+
+          <div class="item-actions">
+            <button class="btn-icon-danger" title="Rimuovi prodotto" (click)="removeFromCart(item.product)">
+              <i class="fa fa-trash"></i> 🗑️
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cart-summary-section">
+        <div class="summary-card shadow">
+          <h3>Riepilogo Ordine</h3>
+
+          <div class="summary-row">
+            <span>Subtotale ({{ cartCount }} articoli)</span>
+            <span>{{ cartTotal() | currency:'EUR' }}</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Spedizione</span>
+            <span class="text-success">Gratuita</span>
+          </div>
+
+          <div class="summary-divider"></div>
+
+          <div class="summary-row total-row">
+            <span>Totale</span>
+            <span>{{ cartTotal() | currency:'EUR' }}</span>
+          </div>
+
+          <button class="btn-modern btn-accent w-100 mt-4">Procedi all'Acquisto</button>
+
+          <div class="secure-checkout">
+            <small>🔒 Pagamento sicuro e crittografato</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

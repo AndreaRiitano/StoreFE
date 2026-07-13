@@ -33,9 +33,9 @@ export class UserService {
       try {
 
         const profile = await this.keycloakService.getUserProfileFromToken();
-
+        const id = this.keycloakService.getKeycloakId();
         const userLogged: User = {
-          keycloakId: profile.sub,
+          keycloakId: id,
           email: profile.email || '',
           firstName: profile.firstName || '',
           lastName: profile.lastName || '',

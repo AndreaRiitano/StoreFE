@@ -9,11 +9,13 @@ import { tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { throwError } from 'rxjs';
 import {KeycloakService} from '../security/keycloak/keycloak.service'
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+
   private cartCountSubject = new BehaviorSubject<number>(0);
   public cartCount$ = this.cartCountSubject.asObservable();
   private items: Product[] = [];
@@ -52,9 +54,23 @@ export class CartService {
     );
   }
 
+  removeFromCart(product: Product): Observable<any> {
+    const currentUserId : string | undefined = this.keycloakService.getKeycloakId();
+    let toRemove: ProductInPurchase = {
+      product: product,
+      keycloakId: currentUserId,
+    };
+    return this.http.post(`${this.apiUrl}/cartRemove`, toRemove);
+  }
+
   getCartCount(): number {
     return this.cartCountSubject.value
+  }
 
-
+  decrementCartCount() {
+    const current = this.cartCountSubject.value;
+    if (current > 0) {
+      this.cartCountSubject.next(current - 1);
+    }
   }
 }

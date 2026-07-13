@@ -1,39 +1,256 @@
-.profile-card {
-  border-radius: 15px;
-  background-color: #ffffff;
-  overflow: hidden;
-  border: none;
+/* --- Contenitore Principale --- */
+.cart-modern-wrapper {
+  background-color: #f8fafc;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-.profile-header {
-  background-color: #f8f9fa;
+.cart-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.avatar-circle {
-  width: 80px;
-  height: 80px;
-  background-color: #0d6efd;
-  color: white;
-  border-radius: 50%;
+/* --- Header --- */
+.cart-header h2 {
+  font-size: 32px;
+  color: #1e293b;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.header-divider {
+  height: 5px;
+  width: 70px;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 3px;
+  margin-bottom: 40px;
+}
+
+/* --- Stato Carrello Vuoto --- */
+.empty-cart-state {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 60px 20px;
+  text-align: center;
+  border: 1px solid #f1f5f9;
+}
+
+.empty-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.text-muted { color: #64748b; }
+.mt-3 { margin-top: 15px; }
+.mt-4 { margin-top: 25px; }
+.w-100 { width: 100%; }
+
+/* --- Layout  --- */
+.cart-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.cart-items-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-summary-section {
+  flex: 1;
+  position: sticky;
+  top: 100px;
+}
+
+/* --- Card Singolo Prodotto --- */
+.cart-item-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.item-image-wrapper {
+  width: 100px;
+  height: 100px;
+  background-color: #f8fafc;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  font-weight: bold;
+  padding: 10px;
+  flex-shrink: 0;
 }
 
-.info-row {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+.item-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-.info-row strong {
-  color: #6c757d;
-  font-size: 0.9rem;
-  text-transform: uppercase;
+.item-info {
+  flex-grow: 1;
 }
 
-.info-row p {
+.item-name {
+  font-size: 18px;
+  color: #0f172a;
+  margin: 0 0 5px;
+  font-weight: 700;
+}
+
+.item-desc {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.item-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0284c7;
+  white-space: nowrap;
+}
+
+/* --- Bottone Rimuovi (Cestino) --- */
+.btn-icon-danger {
+  background: #fef2f2;
+  color: #ef4444;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.btn-icon-danger:hover {
+  background: #ef4444;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* --- Card Riepilogo Ordine --- */
+.summary-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #f1f5f9;
+}
+
+.summary-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #0f172a;
+  margin-bottom: 25px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: #475569;
+  font-size: 15px;
+}
+
+.text-success { color: #10b981; font-weight: 600; }
+
+.summary-divider {
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 20px 0;
+}
+
+.total-row {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
   margin-bottom: 0;
-  font-size: 1.1rem;
+}
+
+.secure-checkout {
+  text-align: center;
+  margin-top: 15px;
+  color: #94a3b8;
+}
+
+/* --- Bottoni --- */
+.btn-modern {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: #0284c7;
+  color: white;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.btn-primary:hover {
+  background: #0369a1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(2, 132, 199, 0.4);
+}
+
+.btn-accent {
+  background: #4facfe;
+  color: white;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.btn-accent:hover {
+  background: #00f2fe;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
+}
+
+.shadow { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04); }
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 768px) {
+  .cart-layout {
+    flex-direction: column;
+  }
+  .cart-summary-section {
+    position: static;
+    width: 100%;
+  }
+  .cart-item-card {
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .item-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
 }

@@ -22,10 +22,10 @@ export class NavbarComponent implements OnInit {
     if (this.keycloakService.isLoggedIn()) {
       this.keycloakId = this.keycloakService.getKeycloakId();
 
-      this.aggiornaCarrelloDalDatabase();
+      this.updateCartFromDb();
 
       this.cartService.cartCount$.subscribe(count => {
-        this.aggiornaCarrelloDalDatabase();
+        this.updateCartFromDb();
       });
 
       this.cartService.getCart(this.keycloakId).subscribe({
@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  private aggiornaCarrelloDalDatabase() {
+  private updateCartFromDb() {
     if (!this.keycloakId) return;
 
     this.cartService.getCart(this.keycloakId).subscribe({

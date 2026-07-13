@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';
 import { PersonalAreaComponent } from './components/personalarea/personalarea.component';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
     HomeComponent,
     CartComponent,
     PersonalAreaComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,6 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule
   ],
   providers: [
-    provideClientHydration(),
     KeycloakService,
     {
       provide: APP_INITIALIZER,
