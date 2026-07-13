@@ -1,0 +1,218 @@
+/* Contenitore Principale */
+.purchases-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-header {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.page-header h2 {
+  font-size: 32px;
+  color: #212529;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.page-header p {
+  color: #6c757d;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Stato Vuoto  */
+.empty-state {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 60px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+.empty-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.empty-state h3 {
+  font-size: 24px;
+  color: #343a40;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #6c757d;
+  margin-bottom: 25px;
+}
+
+/* Bottone standard blu  */
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Card del singolo Ordine */
+.order-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 25px;
+  overflow: hidden;
+  border: 1px solid #f1f3f5;
+}
+
+/* Intestazione Card Ordine */
+.order-header {
+  background-color: #f8f9fa;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-id {
+  font-weight: 700;
+  color: #212529;
+  font-size: 16px;
+}
+
+.order-date {
+  color: #6c757d;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+/* Corpo della Card: Lista Prodotti */
+.order-items {
+  padding: 10px 24px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px dashed #e9ecef;
+}
+
+.item-row:last-child {
+  border-bottom: none;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #343a40;
+  font-size: 16px;
+}
+
+.item-category {
+  font-size: 13px;
+  color: #868e96;
+  margin-top: 3px;
+}
+
+.item-qty-price {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.item-qty {
+  font-size: 14px;
+  color: #495057;
+  background-color: #f8f9fa;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.item-price {
+  font-weight: 600;
+  color: #212529;
+  font-size: 16px;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Piè di pagina Card: Totale */
+.order-footer {
+  background-color: #fafbfc;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 1px solid #e9ecef;
+}
+
+.total-label {
+  font-size: 16px;
+  color: #495057;
+  margin-right: 15px;
+}
+
+.total-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: #212529;
+}
+
+/* Responsive per dispositivi mobili */
+@media (max-width: 600px) {
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .item-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .item-qty-price {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

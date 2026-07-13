@@ -1,6 +1,7 @@
-import {CartItemDetails} from './cartitemdetails.model'
+import {ProductInPurchase} from './productinpurchase.model'
 
 export interface Purchase {
-  cart : CartItemDetails[];
-  user: string | undefined;
+  productInPurchase : ProductInPurchase[];
+  purchaseTime : Date;
+  id : number;
 }

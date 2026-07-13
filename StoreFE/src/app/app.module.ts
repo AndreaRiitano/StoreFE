@@ -12,6 +12,7 @@ import { PersonalAreaComponent } from './components/personalarea/personalarea.co
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     PersonalAreaComponent,
     NavbarComponent,
     InvoiceComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

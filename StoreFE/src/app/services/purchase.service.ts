@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
 })
 export class PurchaseService {
   public lastInvoice : any = null;
-  
+
   private apiUrl = 'http://localhost:8080/purchases';
 
   constructor(private http: HttpClient) { }
@@ -19,5 +19,10 @@ export class PurchaseService {
 
     return this.http.post(`${this.apiUrl}/addPurchase`, user);
 
+  }
+
+  getAllPurchase(user : User): Observable<any>{
+
+    return this.http.post(`${this.apiUrl}/orders`, user);
   }
 }

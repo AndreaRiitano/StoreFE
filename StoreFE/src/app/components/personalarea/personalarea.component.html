@@ -16,6 +16,7 @@
         <h2 class="user-name">{{ user.firstName }} {{ user.lastName }}</h2>
         <p class="user-role">Cliente Verificato</p>
         <button class="btn-modern">Modifica Profilo</button>
+        <button class="btn-modern" routerLink="/orders">I Miei Ordini</button>
         <button class="btn-modern btn-danger mt-2" (click)="keycloakService.logout()">Esci dall'account</button>
       </div>
 

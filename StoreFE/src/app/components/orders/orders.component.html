@@ -1,0 +1,51 @@
+<div class="purchases-container">
+
+  <div class="page-header">
+    <h2>I Tuoi Ordini</h2>
+    <p>Qui puoi visualizzare lo storico di tutti i tuoi acquisti.</p>
+  </div>
+
+  <div class="empty-state" *ngIf="purchases.length === 0">
+    <div class="empty-icon">🛍️</div>
+    <h3>Nessun ordine trovato</h3>
+    <p>Non hai ancora effettuato acquisti nel nostro store.</p>
+    <button class="btn-primary" routerLink="/">Inizia lo shopping</button>
+  </div>
+
+  <div class="orders-list" *ngIf="purchases.length > 0">
+
+    <div class="order-card" *ngFor="let purchase of purchases">
+
+      <div class="order-header">
+        <div class="order-info">
+          <span class="order-id">Ordine #{{ purchase.id}}</span>
+          <span class="order-date">Data: {{ purchase.purchaseTime | date:'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+        <div class="order-status">
+
+        </div>
+      </div>
+
+      <div class="order-items">
+        <div class="item-row" *ngFor="let item of purchase.productInPurchase">
+          <div class="item-details">
+            <span class="item-name">{{ item.product?.name }}</span>
+            <span class="item-category">{{ item.product?.category }}</span>
+          </div>
+          <div class="item-qty-price">
+            <span class="item-qty">Qtà: {{ item.quantity }}</span>
+            <span class="item-price">{{ ((item.product?.price || 0) * (item.quantity || 1)) | currency:'EUR' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-footer">
+        <span class="total-label">Totale Pagato:</span>
+        <span class="total-amount">{{getTotalPrice(purchase) | currency:'EUR'}}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
