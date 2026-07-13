@@ -1,0 +1,275 @@
+/* Contenitore Principale */
+.page-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #212529;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .separator {
+  color: #adb5bd;
+  font-size: 12px;
+}
+
+.breadcrumb .current {
+  color: #212529;
+  font-weight: 600;
+}
+
+/* Layout Principale */
+.product-layout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* Colonna Immagine */
+.product-image-section {
+  flex: 1;
+  max-width: 480px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f3f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  max-height: 400px;
+}
+
+/* Colonna Dettagli */
+.product-details-section {
+  flex: 1.2;
+  display: flex;
+  gap: 30px;
+}
+
+.info-block {
+  flex: 1.5;
+}
+
+.title-header {
+  margin-bottom: 20px;
+}
+
+.product-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #212529;
+  line-height: 1.2;
+  margin: 12px 0 8px 0;
+}
+
+.product-code {
+  color: #868e96;
+  font-size: 14px;
+  margin: 0;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #e9ecef;
+  margin: 25px 0;
+}
+
+.divider-light {
+  border: 0;
+  border-top: 1px dashed #e9ecef;
+  margin: 20px 0;
+}
+
+.description-block h3 {
+  font-size: 20px;
+  color: #343a40;
+  margin-bottom: 15px;
+}
+
+.description-block p {
+  line-height: 1.6;
+  font-size: 16px;
+  color: #495057;
+}
+
+
+.buy-box-card {
+  flex: 1;
+  min-width: 280px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f1f3f5;
+  align-self: flex-start;
+}
+
+.price-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #212529;
+}
+
+.vat-info {
+  font-size: 13px;
+  color: #868e96;
+  margin-top: 4px;
+}
+
+.delivery-info {
+  font-size: 15px;
+  color: #495057;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stock-info {
+  margin-bottom: 25px;
+}
+
+/* Bottoni e Badges (Coerenti con lo storico acquisti) */
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-category {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+}
+
+.badge-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.badge-danger {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.btn-block {
+  width: 100%;
+  display: block;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  background-color: #adb5bd;
+  color: #ffffff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.8;
+}
+
+/* Messaggio di avviso per il login */
+.login-warning {
+  font-size: 13px;
+  color: #dc3545;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.secure-transaction {
+  font-size: 13px;
+  color: #6c757d;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Centratura Stato Vuoto / Caricamento */
+.loading-state, .error-state {
+  text-align: center;
+  margin: 100px auto;
+}
+
+.empty-state {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+}
+
+.empty-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .product-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .product-image-section {
+    max-width: 100%;
+  }
+
+  .product-details-section {
+    flex-direction: column;
+  }
+
+  .buy-box-card {
+    width: 100%;
+  }
+}

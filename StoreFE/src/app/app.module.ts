@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     NavbarComponent,
     InvoiceComponent,
     OrdersComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

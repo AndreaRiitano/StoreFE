@@ -33,7 +33,7 @@
         <div class="card-actions">
 
           <ng-container *ngIf="isLogged; else anonimoTemplate">
-            <button class="btn-modern btn-outline" [routerLink]="['/products', product.id]">
+            <button class="btn-modern btn-outline" [routerLink]="['/product', product.id]">
               Dettagli
             </button>
             <button class="btn-modern btn-primary" (click)="addToCart(product)">
@@ -44,8 +44,8 @@
           <ng-template #anonimoTemplate>
             <div class="login-prompt-container">
               <p class="login-notice">Accedi per acquistare</p>
-              <button class="btn-modern btn-disabled" (click)="keycloakService.login()">
-                Accedi per i dettagli
+              <button class="btn-modern btn-outline" [routerLink]="['/product', product.id]">
+                Dettagli
               </button>
             </div>
           </ng-template>

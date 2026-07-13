@@ -1,0 +1,78 @@
+<div class="page-container" *ngIf="!isLoading && product">
+
+  <div class="breadcrumb">
+    <a routerLink="/">Home</a> <span class="separator">></span>
+    <span class="category">{{ product.category }}</span> <span class="separator">></span>
+    <span class="current">{{ product.name }}</span>
+  </div>
+
+  <div class="product-layout">
+
+    <div class="product-image-section">
+      <img [src]="product.imgUrl || 'assets/placeholder.png'" [alt]="product.name" class="main-image">
+    </div>
+
+    <div class="product-details-section">
+
+      <div class="info-block">
+        <div class="title-header">
+          <span class="badge badge-category">{{ product.category }}</span>
+          <h1 class="product-title">{{ product.name }}</h1>
+          <p class="product-code">Codice Articolo: {{ product.code }}</p>
+        </div>
+
+        <hr class="divider">
+
+        <div class="description-block">
+          <h3>Dettagli del prodotto</h3>
+          <p>{{ product.description }}</p>
+        </div>
+      </div>
+
+      <div class="buy-box-card">
+        <div class="price-section">
+          <span class="price-value">{{ product.price | currency:'EUR' }}</span>
+          <span class="vat-info">IVA inclusa</span>
+        </div>
+
+        <hr class="divider-light">
+
+        <div class="delivery-info">
+          <span class="icon">🚚</span> Spedizione <strong>Gratuita</strong>
+        </div>
+
+        <div class="stock-info">
+          <span class="badge badge-success" *ngIf="product.quantity > 0">Disponibilità immediata</span>
+          <span class="badge badge-danger" *ngIf="product.quantity === 0">Attualmente esaurito</span>
+        </div>
+
+        <div class="action-form" *ngIf="product.quantity > 0">
+
+          <button class="btn-primary btn-block"
+                  [disabled]="!isLoggedIn"
+                  (click)="addToCart()">
+            Aggiungi al Carrello
+          </button>
+
+          <div class="login-warning" *ngIf="!isLoggedIn">
+            ⚠️ Devi effettuare l'accesso per poter acquistare.
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="loading-state" *ngIf="isLoading">
+  <div class="spinner"></div>
+  <p>Caricamento dettagli in corso...</p>
+</div>
+
+<div class="error-state empty-state" *ngIf="!isLoading && !product">
+  <div class="empty-icon">🔍</div>
+  <h2>Prodotto non trovato</h2>
+  <p>Ci dispiace, ma il prodotto che stai cercando non esiste o è stato rimosso.</p>
+  <button class="btn-primary" routerLink="/">Torna allo Store</button>
+</div>
