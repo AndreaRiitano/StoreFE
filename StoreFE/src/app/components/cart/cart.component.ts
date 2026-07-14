@@ -84,7 +84,8 @@ export class CartComponent {
           this.cartService.initCartCount();
           this.router.navigateByUrl('/invoice')
         },
-        error: (err) => {console.log("error during purchase", err)}
+        error: (err) => {console.log("error during purchase", err)
+        alert("Errore durante l'acquisto, quantità selezionata non disponibile")}
       })
     }
     }
